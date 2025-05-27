@@ -1,37 +1,37 @@
 /* CSS Variables for Consistent Theming */
 :root {
-  --primary-color: #6a0572;
-  --accent-color: #cc2b5e;
-  --background-dark: #0f0c29;
-  --card-background: #1d1836;
-  --text-light: #f0e6fa;
-  --text-muted: #a0a0a0;
-  --shadow-color: rgba(106, 5, 114, 0.4);
-  --shadow-hover: rgba(204, 43, 94, 0.6);
-  --notice-bg: #4CAF50;
-  --notice-text: #ffffff;
+  --primary-color: #6a0572; /* Deeper purple */
+  --accent-color: #cc2b5e; /* Vibrant fuchsia/red */
+  --background-dark: #0f0c29; /* Dark blue-purple for depth */
+  --card-background: #1d1836; /* Slightly lighter than background-dark */
+  --text-light: #f0e6fa; /* Off-white for readability */
+  --text-muted: #a0a0a0; /* Softer grey for secondary text */
+  --shadow-color: rgba(106, 5, 114, 0.4); /* Primary color based shadow */
+  --shadow-hover: rgba(204, 43, 94, 0.6); /* Accent color based shadow */
+  --notice-bg: #4CAF50; /* Softer green for notices (e.g., success) */
+  --notice-text: #ffffff; /* White text for notice */
   --gradient-1: #6a0572;
   --gradient-2: #cc2b5e;
-  --button-hover-gradient-start: #b01c4c;
-  --button-hover-gradient-end: #7a048a;
+  --button-hover-gradient-start: #b01c4c; /* Darker accent for button hover */
+  --button-hover-gradient-end: #7a048a; /* Darker primary for button hover */
 }
 
 /* Base Body Styling with a subtle pattern and smooth scrolling */
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /* Smooth scrolling for anchor links (if added later) */
 }
 
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(135deg, var(--background-dark) 0%, #2c2c2c 100%),
-              url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.03)"/></svg>') repeat;
+              url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.03)"/></svg>') repeat; /* More subtle white dots */
   color: var(--text-light);
   overflow-x: hidden;
   line-height: 1.6;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility; /* Better font rendering */
+  -webkit-font-smoothing: antialiased; /* Smoother fonts on WebKit */
+  -moz-osx-font-smoothing: grayscale; /* Smoother fonts on Firefox */
 }
 
 /* Pix Notice Bar - Elevated and more prominent */
@@ -39,41 +39,41 @@ body {
   background: var(--notice-bg);
   color: var(--notice-text);
   text-align: center;
-  padding: 15px 0;
-  font-size: 1.2rem;
+  padding: 15px 0; /* Increased padding */
+  font-size: 1.2rem; /* Larger font */
   font-weight: 600;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
-  animation: slideDown 0.6s ease-out;
-  letter-spacing: 0.8px;
-  border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+  animation: slideDown 0.6s ease-out; /* Slightly longer animation */
+  letter-spacing: 0.8px; /* More spacing */
+  border-bottom: 3px solid rgba(255, 255, 255, 0.1); /* Subtle white line below */
 }
 
 .pix-notice span {
-  font-weight: 800;
+  font-weight: 800; /* Extra bold */
   text-transform: uppercase;
   background: linear-gradient(45deg, #00ff85, #1affd9);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
 }
 
 /* Header Styling with Smaller Logo and Parallax-like effect */
 header {
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
   text-align: center;
-  padding: 4rem 1rem 5rem;
-  box-shadow: 0 0 50px var(--shadow-color);
+  padding: 4rem 1rem 5rem; /* Increased padding for more prominence and bottom curve */
+  box-shadow: 0 0 50px var(--shadow-color); /* Stronger, more diffused shadow */
   position: relative;
   z-index: 10;
-  border-bottom-left-radius: 50% 12%;
+  border-bottom-left-radius: 50% 12%; /* More pronounced curve */
   border-bottom-right-radius: 50% 12%;
   animation: headerFadeIn 1.2s ease-out forwards;
-  overflow: hidden;
-  isolation: isolate;
+  overflow: hidden; /* Ensure content doesn't spill out of curve */
+  isolation: isolate; /* Create new stacking context */
 }
 
 /* Subtle background elements for visual interest in header */
@@ -82,8 +82,8 @@ header::after {
   content: '';
   position: absolute;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  filter: blur(80px);
+  background: rgba(255, 255, 255, 0.05); /* Light, subtle circles */
+  filter: blur(80px); /* Soft glow effect */
   z-index: -1;
 }
 
@@ -104,33 +104,33 @@ header::after {
 }
 
 header .logo {
-  width: 180px;
+  width: 180px; /* Even larger logo */
   height: auto;
   margin-bottom: 1rem;
-  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.6s ease;
-  border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.6s ease; /* Smoother transition */
+  border-radius: 20px; /* More rounded logo corners */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4); /* Stronger shadow */
+  border: 2px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
 }
 
 header .logo:hover {
-  transform: scale(1.15) rotate(7deg);
-  filter: brightness(1.2) saturate(1.1);
+  transform: scale(1.15) rotate(7deg); /* More engaging hover */
+  filter: brightness(1.2) saturate(1.1); /* Brighter and more saturated */
 }
 
 header h1 {
   margin: 0;
-  font-size: 4.2rem;
+  font-size: 4.2rem; /* Even larger, more impactful heading */
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 4px;
+  letter-spacing: 4px; /* Increased letter spacing */
   background: linear-gradient(45deg, #e0e0e0, #ffffff);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: fadeInText 1.5s ease-in-out;
-  text-shadow: 3px 3px 8px rgba(0,0,0,0.3);
-  perspective: 1000px;
+  animation: fadeInText 1.5s ease-in-out; /* Specific animation for text */
+  text-shadow: 3px 3px 8px rgba(0,0,0,0.3); /* More pronounced text shadow */
+  perspective: 1000px; /* For 3D text effect */
 }
 
 header h1 span {
@@ -140,11 +140,11 @@ header h1 span {
 }
 
 header h1:hover span {
-  transform: rotateX(10deg);
+  transform: rotateX(10deg); /* Slight 3D tilt on hover */
 }
 
 header p {
-  font-size: 1.5rem;
+  font-size: 1.5rem; /* Larger tagline */
   color: var(--text-light);
   margin-top: 1rem;
   font-weight: 300;
@@ -152,7 +152,8 @@ header p {
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
-  position: relative;
+  position: relative; /* For subtle glow effect */
+  margin-bottom: 2rem; /* Added margin-bottom to separate from search bar */
 }
 
 header p::before {
@@ -176,14 +177,75 @@ header p:hover::before {
   opacity: 0.1;
 }
 
+/* Search Bar Styling */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 600px; /* Max width for search bar */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem; /* Padding for small screens */
+}
+
+.search-bar input {
+  flex-grow: 1;
+  padding: 15px 20px;
+  border: 2px solid var(--accent-color);
+  border-radius: 15px;
+  background-color: #302a4a; /* Darker background for input */
+  color: var(--text-light);
+  font-size: 1.1rem;
+  outline: none;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.search-bar input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-bar input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 20px rgba(106, 5, 114, 0.5), inset 0 0 15px rgba(204, 43, 94, 0.2);
+  background-color: #3d355c; /* Slightly lighter on focus */
+}
+
+.search-bar button {
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  color: white;
+  border: none;
+  border-radius: 15px;
+  padding: 15px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.search-bar button:hover {
+  background: linear-gradient(45deg, var(--button-hover-gradient-start), var(--button-hover-gradient-end));
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px var(--shadow-hover);
+}
+
+.search-bar button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
 
 /* Product Grid */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 40px;
-  padding: 60px;
-  max-width: 1800px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Slightly larger min-width */
+  gap: 40px; /* Increased gap */
+  padding: 60px; /* More padding */
+  max-width: 1800px; /* Wider max width */
   margin: 0 auto;
   position: relative;
   z-index: 5;
@@ -192,16 +254,16 @@ header p:hover::before {
 /* Product Card with Image Overlay and Hover Glow */
 .product-card {
   background: var(--card-background);
-  border-radius: 30px;
+  border-radius: 30px; /* Even more rounded corners */
   overflow: hidden;
-  box-shadow: 0 12px 35px var(--shadow-color);
+  box-shadow: 0 12px 35px var(--shadow-color); /* Enhanced shadow */
   transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease, background 0.5s ease;
   opacity: 0;
-  transform: translateY(70px);
-  animation: fadeInUp 0.8s ease-out forwards;
+  transform: translateY(70px); /* Greater initial Y displacement */
+  animation: fadeInUp 0.8s ease-out forwards; /* Slightly longer animation */
   position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  perspective: 1000px;
+  border: 1px solid rgba(255, 255, 255, 0.1); /* More visible subtle border */
+  perspective: 1000px; /* For 3D transform */
 }
 
 /* Individual card animation delays */
@@ -220,53 +282,53 @@ header p:hover::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 50% 50%, rgba(204, 43, 94, 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle at 50% 50%, rgba(204, 43, 94, 0.2) 0%, transparent 70%); /* Subtle radial glow */
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;
-  z-index: 1;
+  z-index: 1; /* Above image, below text */
 }
 
 .product-card:hover::before {
-  opacity: 1;
+  opacity: 1; /* Show glow on hover */
 }
 
 
 .product-card:hover {
-  transform: translateY(-10px) scale(1.04) rotateX(2deg);
-  box-shadow: 0 20px 50px var(--shadow-hover), 0 0 80px rgba(204, 43, 94, 0.3);
+  transform: translateY(-10px) scale(1.04) rotateX(2deg); /* Lift, scale, and subtle 3D tilt */
+  box-shadow: 0 20px 50px var(--shadow-hover), 0 0 80px rgba(204, 43, 94, 0.3); /* Stronger hover shadow with accent glow */
   background: linear-gradient(135deg, #2a224a, #1d1836);
-  border-color: var(--accent-color);
+  border-color: var(--accent-color); /* Highlight border on hover */
 }
 
 .product-card img {
   width: 100%;
-  height: 300px;
+  height: 300px; /* Even taller images */
   object-fit: cover;
-  border-bottom: 5px solid var(--accent-color);
+  border-bottom: 5px solid var(--accent-color); /* Thicker accent border */
   position: relative;
   transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.5s ease;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
-  filter: brightness(0.9);
+  filter: brightness(0.9); /* Slightly darker normally */
 }
 
 .product-card:hover img {
-  transform: scale(1.08);
-  filter: brightness(1.15) saturate(1.1);
+  transform: scale(1.08); /* More pronounced zoom on image hover */
+  filter: brightness(1.15) saturate(1.1); /* Brighter and more saturated */
 }
 
 /* Product Info */
 .product-info {
-  padding: 35px;
+  padding: 35px; /* More padding */
   text-align: center;
-  position: relative;
+  position: relative; /* For z-index of elements */
 }
 
 .product-info h3 {
   margin: 0 0 12px 0;
-  font-size: 2rem;
-  font-weight: 800;
+  font-size: 2rem; /* Larger product name */
+  font-weight: 800; /* Extra bold */
   color: var(--text-light);
   transition: color 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   letter-spacing: 0.8px;
@@ -275,19 +337,19 @@ header p:hover::before {
 
 .product-info h3:hover {
   color: var(--accent-color);
-  transform: translateY(-2px);
+  transform: translateY(-2px); /* Slight lift on hover */
 }
 
 .product-info p {
-  margin: 18px 0;
+  margin: 18px 0; /* More margin */
   color: var(--text-muted);
-  font-size: 1.05rem;
+  font-size: 1.05rem; /* Slightly larger description text */
   line-height: 1.7;
   font-weight: 300;
-  min-height: 70px;
+  min-height: 70px; /* Ensure consistent height for descriptions */
   display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3; /* Added standard property */
+  -webkit-line-clamp: 3; /* Limit description to 3 lines */
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -295,26 +357,26 @@ header p:hover::before {
 
 /* Old Price Styling */
 .product-info .price-old {
-    font-size: 1.2rem;
-    color: var(--text-muted);
-    text-decoration: line-through;
-    margin: 5px 0 0;
-    display: block;
+    font-size: 1.2rem; /* Smaller than current price */
+    color: var(--text-muted); /* Muted color */
+    text-decoration: line-through; /* Strikethrough effect */
+    margin: 5px 0 0; /* Adjust margin to be above the new price */
+    display: block; /* Ensure it takes its own line */
     font-weight: 400;
 }
 
 
 .product-info .price {
-  font-size: 1.8rem;
+  font-size: 1.8rem; /* Larger price */
   color: var(--accent-color);
   font-weight: bold;
-  background: rgba(204, 43, 94, 0.15);
-  padding: 10px 20px;
-  border-radius: 10px;
+  background: rgba(204, 43, 94, 0.15); /* Slightly darker accent based background */
+  padding: 10px 20px; /* More padding */
+  border-radius: 10px; /* More rounded */
   display: inline-block;
-  margin-bottom: 25px;
+  margin-bottom: 25px; /* Space below price */
   letter-spacing: 0.8px;
-  box-shadow: inset 0 0 10px rgba(204, 43, 94, 0.3);
+  box-shadow: inset 0 0 10px rgba(204, 43, 94, 0.3); /* Inner glow */
   transition: transform 0.3s ease, background 0.3s ease;
 }
 
@@ -328,18 +390,18 @@ header p:hover::before {
   background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
   color: #fff;
   border: none;
-  padding: 18px;
+  padding: 18px; /* Larger button */
   width: calc(100% - 20px);
-  border-radius: 15px;
+  border-radius: 15px; /* More rounded */
   cursor: pointer;
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-size: 1.3rem; /* Larger font */
+  font-weight: 700; /* Bolder */
   transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.5s ease, box-shadow 0.5s ease;
   letter-spacing: 1.2px;
   text-transform: uppercase;
   box-shadow: 0 8px 25px rgba(0,0,0,0.3);
   position: relative;
-  overflow: hidden;
+  overflow: hidden; /* For pseudo-element effect */
   z-index: 2;
 }
 
@@ -360,8 +422,8 @@ header p:hover::before {
 }
 
 .buy-button:hover {
-  background: linear-gradient(45deg, var(--button-hover-gradient-start), var(--button-hover-gradient-end));
-  transform: translateY(-7px) scale(1.02);
+  background: linear-gradient(45deg, var(--button-hover-gradient-start), var(--button-hover-gradient-end)); /* Darker gradient on hover */
+  transform: translateY(-7px) scale(1.02); /* More pronounced lift on hover */
   box-shadow: 0 10px 30px var(--shadow-hover);
 }
 
@@ -378,8 +440,8 @@ header p:hover::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.98);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.98); /* Even darker, almost opaque background */
+  backdrop-filter: blur(8px); /* Glassmorphism background blur */
   z-index: 1000;
   animation: fadeIn 0.5s ease-in-out;
   display: flex;
@@ -388,39 +450,39 @@ header p:hover::before {
 }
 
 .modal-content {
-  background: linear-gradient(160deg, var(--card-background), #3c3c3c);
-  padding: 40px;
+  background: linear-gradient(160deg, var(--card-background), #3c3c3c); /* Deeper gradient */
+  padding: 40px; /* More padding */
   width: 90%;
-  max-width: 700px;
-  border-radius: 30px;
-  box-shadow: 0 0 60px var(--shadow-hover), inset 0 0 20px rgba(255, 255, 255, 0.05);
+  max-width: 700px; /* Larger max width */
+  border-radius: 30px; /* More rounded */
+  box-shadow: 0 0 60px var(--shadow-hover), inset 0 0 20px rgba(255, 255, 255, 0.05); /* Stronger outer and subtle inner shadow */
   position: relative;
-  animation: slideUp 0.6s ease-out;
-  border: 3px solid var(--accent-color);
-  transform-style: preserve-3d;
+  animation: slideUp 0.6s ease-out; /* Slightly longer animation */
+  border: 3px solid var(--accent-color); /* Thicker accent border */
+  transform-style: preserve-3d; /* For possible 3D effects later */
 }
 
 .close {
   position: absolute;
   top: 25px;
   right: 30px;
-  font-size: 3rem;
+  font-size: 3rem; /* Larger close button */
   cursor: pointer;
   color: var(--accent-color);
   transition: color 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-  text-shadow: 0 0 10px rgba(204, 43, 94, 0.5);
+  text-shadow: 0 0 10px rgba(204, 43, 94, 0.5); /* Glowing close button */
 }
 
 .close:hover {
   color: var(--text-light);
-  transform: rotate(360deg) scale(1.2);
+  transform: rotate(360deg) scale(1.2); /* Full rotation and scale */
 }
 
 /* Form Styling - More structured and spacious */
 form {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 25px; /* More spacing */
 }
 
 form h2 {
@@ -438,43 +500,43 @@ form h2 {
 
 form label {
   color: var(--text-light);
-  font-size: 1.25rem;
+  font-size: 1.25rem; /* Larger label font */
   font-weight: 500;
-  margin-bottom: 8px;
+  margin-bottom: 8px; /* More space between label and input */
   display: block;
 }
 
 form input {
-  padding: 18px;
-  border: 2px solid #5c5c5c;
-  border-radius: 15px;
-  background: #3c3c3c;
+  padding: 18px; /* Larger inputs */
+  border: 2px solid #5c5c5c; /* Thicker subtle border */
+  border-radius: 15px; /* More rounded */
+  background: #3c3c3c; /* Darker input background */
   color: #fff;
   font-size: 1.15rem;
   transition: box-shadow 0.4s ease, border 0.4s ease, background 0.4s ease;
-  box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.2); /* Inner shadow for depth */
 }
 
 form input:focus {
   outline: none;
-  box-shadow: 0 0 20px var(--shadow-hover), inset 0 0 10px rgba(204, 43, 94, 0.3);
+  box-shadow: 0 0 20px var(--shadow-hover), inset 0 0 10px rgba(204, 43, 94, 0.3); /* Stronger accent colored shadow with inner glow */
   border: 3px solid var(--accent-color);
-  background: #4a4a4a;
+  background: #4a4a4a; /* Slightly lighter on focus */
 }
 
 form button {
   background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
   color: #fff;
   border: none;
-  padding: 20px;
+  padding: 20px; /* Larger submit button */
   border-radius: 15px;
   cursor: pointer;
-  font-size: 1.4rem;
-  font-weight: 800;
+  font-size: 1.4rem; /* Larger font */
+  font-weight: 800; /* Extra bolder font */
   transition: background 0.5s ease, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s ease;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  margin-top: 30px;
+  margin-top: 30px; /* More space above button */
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   position: relative;
   overflow: hidden;
@@ -710,6 +772,16 @@ footer p {
   }
   header p {
     font-size: 1.1rem;
+  }
+  .search-bar {
+    flex-direction: column; /* Stack input and button */
+    gap: 10px;
+  }
+  .search-bar input {
+    width: 100%; /* Full width */
+  }
+  .search-bar button {
+    width: 100%; /* Full width */
   }
   .product-grid {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
