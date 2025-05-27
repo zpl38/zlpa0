@@ -1,208 +1,130 @@
-/* CSS Variables for Consistent Theming */
 :root {
-  --primary-color: #6a0572; /* Deeper purple */
-  --accent-color: #cc2b5e; /* Vibrant fuchsia/red */
-  --background-dark: #0f0c29; /* Dark blue-purple for depth */
-  --card-background: #1d1836; /* Slightly lighter than background-dark */
-  --text-light: #f0e6fa; /* Off-white for readability */
-  --text-muted: #a0a0a0; /* Softer grey for secondary text */
-  --shadow-color: rgba(106, 5, 114, 0.4); /* Primary color based shadow */
-  --shadow-hover: rgba(204, 43, 94, 0.6); /* Accent color based shadow */
-  --notice-bg: #4CAF50; /* Softer green for notices (e.g., success) */
-  --notice-text: #ffffff; /* White text for notice */
+  --primary-color: #6a0572;
+  --accent-color: #cc2b5e;
+  --background-dark: #0f0c29;
+  --card-background: #1d1836;
+  --text-light: #f0e6fa;
+  --text-muted: #a0a0a0;
+  --shadow-color: rgba(106, 5, 114, 0.4);
+  --shadow-hover: rgba(204, 43, 94, 0.6);
+  --notice-bg: #4CAF50;
+  --notice-text: #ffffff;
   --gradient-1: #6a0572;
   --gradient-2: #cc2b5e;
-  --button-hover-gradient-start: #b01c4c; /* Darker accent for button hover */
-  --button-hover-gradient-end: #7a048a; /* Darker primary for button hover */
+  --button-hover-gradient-start: #b01c4c;
+  --button-hover-gradient-end: #7a048a;
 }
 
-/* Base Body Styling with a subtle pattern and smooth scrolling */
 html {
-  scroll-behavior: smooth; /* Smooth scrolling for anchor links (if added later) */
+  scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, var(--background-dark) 0%, #2c2c2c 100%),
-              url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.03)"/></svg>') repeat; /* More subtle white dots */
+  margin: 0;
+  padding: 0;
+  background: var(--background-dark);
   color: var(--text-light);
-  overflow-x: hidden;
   line-height: 1.6;
-  text-rendering: optimizeLegibility; /* Better font rendering */
-  -webkit-font-smoothing: antialiased; /* Smoother fonts on WebKit */
-  -moz-osx-font-smoothing: grayscale; /* Smoother fonts on Firefox */
+  overflow-x: hidden;
 }
 
-/* Pix Notice Bar - Elevated and more prominent */
-.pix-notice {
-  background: var(--notice-bg);
-  color: var(--notice-text);
-  text-align: center;
-  padding: 15px 0; /* Increased padding */
-  font-size: 1.2rem; /* Larger font */
-  font-weight: 600;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Stronger shadow */
-  animation: slideDown 0.6s ease-out; /* Slightly longer animation */
-  letter-spacing: 0.8px; /* More spacing */
-  border-bottom: 3px solid rgba(255, 255, 255, 0.1); /* Subtle white line below */
-}
-
-.pix-notice span {
-  font-weight: 800; /* Extra bold */
-  text-transform: uppercase;
-  background: linear-gradient(45deg, #00ff85, #1affd9);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
-}
-
-/* Header Styling with Smaller Logo and Parallax-like effect */
 header {
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
+  color: #fff;
+  padding: 3rem 1rem 4rem;
   text-align: center;
-  padding: 4rem 1rem 5rem; /* Increased padding for more prominence and bottom curve */
-  box-shadow: 0 0 50px var(--shadow-color); /* Stronger, more diffused shadow */
+  box-shadow: 0 4px 15px var(--shadow-color);
   position: relative;
-  z-index: 10;
-  border-bottom-left-radius: 50% 12%; /* More pronounced curve */
-  border-bottom-right-radius: 50% 12%;
-  animation: headerFadeIn 1.2s ease-out forwards;
-  overflow: hidden; /* Ensure content doesn't spill out of curve */
-  isolation: isolate; /* Create new stacking context */
+  overflow: hidden;
 }
 
-/* Subtle background elements for visual interest in header */
 header::before,
 header::after {
   content: '';
   position: absolute;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05); /* Light, subtle circles */
-  filter: blur(80px); /* Soft glow effect */
-  z-index: -1;
+  opacity: 0.3;
 }
 
 header::before {
-  width: 300px;
-  height: 300px;
-  top: -100px;
+  width: 200px;
+  height: 200px;
+  top: -50px;
   left: -50px;
-  animation: floatEffect 8s ease-in-out infinite alternate;
 }
 
 header::after {
-  width: 250px;
-  height: 250px;
-  bottom: -100px;
-  right: -70px;
-  animation: floatEffect 10s ease-in-out infinite alternate-reverse;
+  width: 150px;
+  height: 150px;
+  bottom: -40px;
+  right: -40px;
+}
+
+header .pix-notice {
+  background-color: var(--notice-bg);
+  color: var(--notice-text);
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  display: inline-block;
+  font-weight: 500;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+header .pix-notice span {
+  font-weight: 700;
+  margin-right: 5px;
 }
 
 header .logo {
-  width: 180px; /* Even larger logo */
-  height: auto;
-  margin-bottom: 1rem;
-  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.6s ease; /* Smoother transition */
-  border-radius: 20px; /* More rounded logo corners */
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4); /* Stronger shadow */
-  border: 2px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
-}
-
-header .logo:hover {
-  transform: scale(1.15) rotate(7deg); /* More engaging hover */
-  filter: brightness(1.2) saturate(1.1); /* Brighter and more saturated */
-}
-
-header h1 {
-  margin: 0;
-  font-size: 4.2rem; /* Even larger, more impactful heading */
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 4px; /* Increased letter spacing */
-  background: linear-gradient(45deg, #e0e0e0, #ffffff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: fadeInText 1.5s ease-in-out; /* Specific animation for text */
-  text-shadow: 3px 3px 8px rgba(0,0,0,0.3); /* More pronounced text shadow */
-  perspective: 1000px; /* For 3D text effect */
-}
-
-header h1 span {
-  display: inline-block;
-  transform: rotateX(0deg);
+  max-width: 150px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  border: 3px solid var(--accent-color);
+  box-shadow: 0 0 15px rgba(204, 43, 94, 0.7);
   transition: transform 0.3s ease;
 }
 
-header h1:hover span {
-  transform: rotateX(10deg); /* Slight 3D tilt on hover */
+header .logo:hover {
+  transform: scale(1.05);
+}
+
+header h1 {
+  font-size: 3.5rem;
+  margin: 0;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  animation: slideIn 1s ease-out;
 }
 
 header p {
-  font-size: 1.5rem; /* Larger tagline */
+  font-size: 1.2rem;
+  margin-top: 10px;
   color: var(--text-light);
-  margin-top: 1rem;
-  font-weight: 300;
-  animation: fadeIn 2s ease-in-out;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative; /* For subtle glow effect */
-  margin-bottom: 2rem; /* Added margin-bottom to separate from search bar */
+  animation: fadeIn 1.5s ease-out;
 }
 
-header p::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
-  opacity: 0;
-  transform: translate(-50%, -50%);
-  transition: all 0.5s ease;
-  z-index: -1;
-}
-
-header p:hover::before {
-  width: 150px;
-  height: 150px;
-  opacity: 0.1;
-}
-
-/* Search Bar Styling */
 .search-bar {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 15px;
-  margin-top: 1.5rem;
-  margin-bottom: 2rem;
-  width: 100%;
-  max-width: 600px; /* Max width for search bar */
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 1rem; /* Padding for small screens */
+  margin-top: 30px;
+  animation: fadeInUp 1s ease-out;
 }
 
 .search-bar input {
-  flex-grow: 1;
-  padding: 15px 20px;
-  border: 2px solid var(--accent-color);
-  border-radius: 15px;
-  background-color: #302a4a; /* Darker background for input */
-  color: var(--text-light);
-  font-size: 1.1rem;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px 0 0 25px;
   outline: none;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+  width: 300px;
+  max-width: 80%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+  font-size: 1rem;
   transition: all 0.3s ease;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .search-bar input::placeholder {
@@ -210,456 +132,303 @@ header p:hover::before {
 }
 
 .search-bar input:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 20px rgba(106, 5, 114, 0.5), inset 0 0 15px rgba(204, 43, 94, 0.2);
-  background-color: #3d355c; /* Slightly lighter on focus */
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .search-bar button {
-  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
-  color: white;
+  padding: 12px 20px;
   border: none;
-  border-radius: 15px;
-  padding: 15px 20px;
-  font-size: 1.2rem;
+  border-radius: 0 25px 25px 0;
+  background: var(--accent-color);
+  color: #fff;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
 }
 
 .search-bar button:hover {
-  background: linear-gradient(45deg, var(--button-hover-gradient-start), var(--button-hover-gradient-end));
-  transform: translateY(-3px);
-  box-shadow: 0 7px 20px var(--shadow-hover);
+  background-color: var(--button-hover-gradient-start);
+  transform: translateY(-2px);
 }
 
-.search-bar button:active {
-  transform: translateY(0);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+.search-bar button i {
+  color: #fff;
 }
 
-
-/* Product Grid */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Slightly larger min-width */
-  gap: 40px; /* Increased gap */
-  padding: 60px; /* More padding */
-  max-width: 1800px; /* Wider max width */
-  margin: 0 auto;
-  position: relative;
-  z-index: 5;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 50px;
+  max-width: 1200px;
+  margin: 40px auto;
 }
 
-/* Product Card with Image Overlay and Hover Glow */
 .product-card {
   background: var(--card-background);
-  border-radius: 30px; /* Even more rounded corners */
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 12px 35px var(--shadow-color); /* Enhanced shadow */
-  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease, background 0.5s ease;
-  opacity: 0;
-  transform: translateY(70px); /* Greater initial Y displacement */
-  animation: fadeInUp 0.8s ease-out forwards; /* Slightly longer animation */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
   position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.1); /* More visible subtle border */
-  perspective: 1000px; /* For 3D transform */
 }
-
-/* Individual card animation delays */
-.product-card:nth-child(odd) { animation-delay: 0.1s; }
-.product-card:nth-child(even) { animation-delay: 0.2s; }
-/* More granular control for a staggered effect on larger grids */
-.product-card:nth-child(3n+1) { animation-delay: 0.1s; }
-.product-card:nth-child(3n+2) { animation-delay: 0.25s; }
-.product-card:nth-child(3n+3) { animation-delay: 0.4s; }
-
-
-.product-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 50% 50%, rgba(204, 43, 94, 0.2) 0%, transparent 70%); /* Subtle radial glow */
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-  z-index: 1; /* Above image, below text */
-}
-
-.product-card:hover::before {
-  opacity: 1; /* Show glow on hover */
-}
-
 
 .product-card:hover {
-  transform: translateY(-10px) scale(1.04) rotateX(2deg); /* Lift, scale, and subtle 3D tilt */
-  box-shadow: 0 20px 50px var(--shadow-hover), 0 0 80px rgba(204, 43, 94, 0.3); /* Stronger hover shadow with accent glow */
-  background: linear-gradient(135deg, #2a224a, #1d1836);
-  border-color: var(--accent-color); /* Highlight border on hover */
+  transform: translateY(-10px);
+  box-shadow: 0 12px 25px var(--shadow-hover);
 }
 
 .product-card img {
   width: 100%;
-  height: 300px; /* Even taller images */
+  height: 250px;
   object-fit: cover;
-  border-bottom: 5px solid var(--accent-color); /* Thicker accent border */
-  position: relative;
-  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.5s ease;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  filter: brightness(0.9); /* Slightly darker normally */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.product-card:hover img {
-  transform: scale(1.08); /* More pronounced zoom on image hover */
-  filter: brightness(1.15) saturate(1.1); /* Brighter and more saturated */
-}
-
-/* Product Info */
 .product-info {
-  padding: 35px; /* More padding */
-  text-align: center;
-  position: relative; /* For z-index of elements */
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-info .ranking-tag {
+  background: var(--accent-color);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  align-self: flex-start;
 }
 
 .product-info h3 {
-  margin: 0 0 12px 0;
-  font-size: 2rem; /* Larger product name */
-  font-weight: 800; /* Extra bold */
+  font-size: 1.5rem;
+  margin: 10px 0 10px;
   color: var(--text-light);
-  transition: color 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-  letter-spacing: 0.8px;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
-
-.product-info h3:hover {
-  color: var(--accent-color);
-  transform: translateY(-2px); /* Slight lift on hover */
+  min-height: 2.5rem;
 }
 
 .product-info p {
-  margin: 18px 0; /* More margin */
+  font-size: 0.95rem;
   color: var(--text-muted);
-  font-size: 1.05rem; /* Slightly larger description text */
-  line-height: 1.7;
-  font-weight: 300;
-  min-height: 70px; /* Ensure consistent height for descriptions */
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* Limit description to 3 lines */
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  flex-grow: 1;
+  margin-bottom: 15px;
+  min-height: 60px;
 }
 
-/* Old Price Styling */
-.product-info .price-old {
-    font-size: 1.2rem; /* Smaller than current price */
-    color: var(--text-muted); /* Muted color */
-    text-decoration: line-through; /* Strikethrough effect */
-    margin: 5px 0 0; /* Adjust margin to be above the new price */
-    display: block; /* Ensure it takes its own line */
-    font-weight: 400;
+.product-info .prices {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
 }
 
+.product-info .original-price {
+  text-decoration: line-through;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
 
-.product-info .price {
-  font-size: 1.8rem; /* Larger price */
+.product-info .current-price {
+  font-size: 1.6rem;
+  font-weight: 700;
   color: var(--accent-color);
-  font-weight: bold;
-  background: rgba(204, 43, 94, 0.15); /* Slightly darker accent based background */
-  padding: 10px 20px; /* More padding */
-  border-radius: 10px; /* More rounded */
-  display: inline-block;
-  margin-bottom: 25px; /* Space below price */
-  letter-spacing: 0.8px;
-  box-shadow: inset 0 0 10px rgba(204, 43, 94, 0.3); /* Inner glow */
-  transition: transform 0.3s ease, background 0.3s ease;
 }
 
-.product-info .price:hover {
-  transform: scale(1.05);
-  background: rgba(204, 43, 94, 0.25);
-}
-
-/* Buy Button - Glassmorphism effect */
 .buy-button {
-  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  background: linear-gradient(45deg, var(--gradient-1), var(--gradient-2));
   color: #fff;
   border: none;
-  padding: 18px; /* Larger button */
-  width: calc(100% - 20px);
-  border-radius: 15px; /* More rounded */
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
-  font-size: 1.3rem; /* Larger font */
-  font-weight: 700; /* Bolder */
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.5s ease, box-shadow 0.5s ease;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-  position: relative;
-  overflow: hidden; /* For pseudo-element effect */
-  z-index: 2;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.buy-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
+.buy-button:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px var(--shadow-hover);
+  background: linear-gradient(45deg, var(--button-hover-gradient-start), var(--button-hover-gradient-end));
+}
+
+.buy-button:disabled {
+  background: #555;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.no-results {
+  text-align: center;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.7s ease;
-  z-index: -1;
+  grid-column: 1 / -1;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  padding: 50px 20px;
+  background-color: var(--card-background);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.buy-button:hover::before {
-  left: 100%;
-}
-
-.buy-button:hover {
-  background: linear-gradient(45deg, var(--button-hover-gradient-start), var(--button-hover-gradient-end)); /* Darker gradient on hover */
-  transform: translateY(-7px) scale(1.02); /* More pronounced lift on hover */
-  box-shadow: 0 10px 30px var(--shadow-hover);
-}
-
-.buy-button:active {
-  transform: translateY(0);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-/* Modal Styling - More immersive */
 .modal {
-  display: none; /* Initially hidden */
+  display: none;
   position: fixed;
-  top: 0;
+  z-index: 1000;
   left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.98); /* Even darker, almost opaque background */
-  backdrop-filter: blur(8px); /* Glassmorphism background blur */
-  z-index: 1000;
-  animation: fadeIn 0.5s ease-in-out;
-  /* Removed 'display: flex' from here, it will be added by .show-modal */
-  align-items: center;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
   justify-content: center;
-}
-
-/* NEW: Rule to show the modal when the 'show-modal' class is present */
-.modal.show-modal {
-  display: flex; /* Makes the modal visible and centers its content */
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .modal-content {
-  background: linear-gradient(160deg, var(--card-background), #3c3c3c); /* Deeper gradient */
-  padding: 40px; /* More padding */
-  width: 90%;
-  max-width: 700px; /* Larger max width */
-  border-radius: 30px; /* More rounded */
-  box-shadow: 0 0 60px var(--shadow-hover), inset 0 0 20px rgba(255, 255, 255, 0.05); /* Stronger outer and subtle inner shadow */
+  background-color: var(--card-background);
+  margin: auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
   position: relative;
-  animation: slideUp 0.6s ease-out; /* Slightly longer animation */
-  border: 3px solid var(--accent-color); /* Thicker accent border */
-  transform-style: preserve-3d; /* For possible 3D effects later */
+  width: 90%;
+  max-width: 700px;
+  animation: zoomIn 0.3s ease-out;
+  color: var(--text-light);
+  overflow-y: auto;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content.small-modal {
+  max-width: 450px;
+  padding: 25px;
+  text-align: center;
+}
+
+.modal-content.small-modal h2 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+}
+
+.modal-content .terms-text {
+  max-height: calc(90vh - 150px);
+  overflow-y: auto;
+  padding-right: 15px;
+  margin-bottom: 20px;
+}
+
+.modal-content .terms-text h3 {
+  font-size: 1.4rem;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  color: var(--accent-color);
+}
+
+.modal-content .terms-text p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 15px;
+  color: var(--text-muted);
+}
+
+.modal-content .terms-text a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.modal-content .terms-text a:hover {
+  text-decoration: underline;
+}
+
+.modal-content button {
+  padding: 15px 25px;
+  background: linear-gradient(45deg, var(--gradient-1), var(--gradient-2));
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+  margin-top: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: auto;
+  align-self: center;
+}
+
+.modal-content button:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px var(--shadow-hover);
+  background: linear-gradient(45deg, var(--button-hover-gradient-start), var(--button-hover-gradient-end));
+}
+
+.modal-content button:disabled {
+  background: #555;
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
 .close {
-  position: absolute;
-  top: 25px;
-  right: 30px;
-  font-size: 3rem; /* Larger close button */
-  cursor: pointer;
-  color: var(--accent-color);
-  transition: color 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-  text-shadow: 0 0 10px rgba(204, 43, 94, 0.5); /* Glowing close button */
-}
-
-.close:hover {
-  color: var(--text-light);
-  transform: rotate(360deg) scale(1.2); /* Full rotation and scale */
-}
-
-/* Form Styling - More structured and spacious */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 25px; /* More spacing */
-}
-
-form h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  color: var(--text-light);
-  margin-bottom: 30px;
-  text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
-  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-weight: 800;
-}
-
-form label {
-  color: var(--text-light);
-  font-size: 1.25rem; /* Larger label font */
-  font-weight: 500;
-  margin-bottom: 8px; /* More space between label and input */
-  display: block;
-}
-
-form input {
-  padding: 18px; /* Larger inputs */
-  border: 2px solid #5c5c5c; /* Thicker subtle border */
-  border-radius: 15px; /* More rounded */
-  background: #3c3c3c; /* Darker input background */
-  color: #fff;
-  font-size: 1.15rem;
-  transition: box-shadow 0.4s ease, border 0.4s ease, background 0.4s ease;
-  box-shadow: inset 0 2px 5px rgba(0,0,0,0.2); /* Inner shadow for depth */
-}
-
-form input:focus {
-  outline: none;
-  box-shadow: 0 0 20px var(--shadow-hover), inset 0 0 10px rgba(204, 43, 94, 0.3); /* Stronger accent colored shadow with inner glow */
-  border: 3px solid var(--accent-color);
-  background: #4a4a4a; /* Slightly lighter on focus */
-}
-
-form button {
-  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
-  color: #fff;
-  border: none;
-  padding: 20px; /* Larger submit button */
-  border-radius: 15px;
-  cursor: pointer;
-  font-size: 1.4rem; /* Larger font */
-  font-weight: 800; /* Extra bolder font */
-  transition: background 0.5s ease, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s ease;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-top: 30px; /* More space above button */
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-}
-
-form button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
-  transition: left 0.8s ease;
-  z-index: -1;
-}
-
-form button:hover::before {
-  left: 100%;
-}
-
-form button:hover {
-  background: linear-gradient(45deg, var(--button-hover-gradient-start), var(--button-hover-gradient-end));
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: 0 12px 35px var(--shadow-hover);
-}
-
-form button:active {
-  transform: translateY(0);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-/* Footer Styling - More impactful */
-footer {
-  background: linear-gradient(135deg, var(--background-dark), #1a1a1a);
-  text-align: center;
-  padding: 4rem;
-  margin-top: 5rem;
-  border-top: 4px solid var(--accent-color);
-  border-top-left-radius: 50% 12%;
-  border-top-right-radius: 50% 12%;
-  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.4);
-  position: relative;
-  overflow: hidden;
-}
-
-footer p {
-  margin: 0 0 1.5rem 0;
-  font-size: 1.15rem;
   color: var(--text-muted);
-  font-weight: 300;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
-/* Social Media Links */
+.close:hover,
+.close:focus {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+footer {
+  background: var(--background-dark);
+  color: var(--text-muted);
+  text-align: center;
+  padding: 30px 20px;
+  border-top: 1px solid #2a2542;
+  font-size: 0.9rem;
+}
+
 .social-links {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 2rem;
+  margin-bottom: 15px;
 }
 
 .social-links a {
   color: var(--text-light);
-  font-size: 2.5rem;
-  transition: color 0.5s ease, transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-  text-shadow: 0 3px 8px rgba(0,0,0,0.4);
-  position: relative;
-  display: inline-block;
+  font-size: 1.8rem;
+  margin: 0 15px;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .social-links a:hover {
   color: var(--accent-color);
-  transform: translateY(-7px) scale(1.3);
-  text-shadow: 0 0 15px var(--shadow-hover);
+  transform: translateY(-3px);
 }
 
-/* Scroll-to-Top Button (New Element - needs HTML button) */
-.scroll-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 55px;
-  height: 55px;
-  font-size: 1.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s ease, visibility 0.5s ease, transform 0.3s ease;
-  z-index: 999;
-}
-
-.scroll-to-top.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.scroll-to-top:hover {
-  background: linear-gradient(45deg, var(--button-hover-gradient-start), var(--button-hover-gradient-end));
-  transform: translateY(-3px) scale(1.1);
-  box-shadow: 0 8px 20px var(--shadow-hover);
-}
-
-/* Keyframe Animations (Updated and New) */
-@keyframes fadeInUp {
+@keyframes fadeInDown {
   from {
     opacity: 0;
-    transform: translateY(70px);
+    transform: translateY(-20px);
   }
   to {
     opacity: 1;
@@ -667,12 +436,27 @@ footer p {
   }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-@keyframes fadeInText {
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -683,173 +467,45 @@ footer p {
   }
 }
 
-@keyframes slideUp {
-  from { transform: translateY(150px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes slideDown {
-  from { transform: translateY(-150%); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes headerFadeIn {
+@keyframes zoomIn {
   from {
     opacity: 0;
-    transform: translateY(-80px);
+    transform: scale(0.9);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes floatEffect {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(20px, 15px) scale(1.05); }
-  100% { transform: translate(0, 0) scale(1); }
-}
-
-
-/* Responsive Design - Fine-tuned for all breakpoints */
-@media (max-width: 1200px) {
-  .product-grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 35px;
-    padding: 50px;
-  }
-  header h1 {
-    font-size: 3.8rem;
+    transform: scale(1);
   }
 }
 
 @media (max-width: 992px) {
-  header {
-    padding: 3.5rem 1rem 4rem;
-  }
-  header h1 {
-    font-size: 3.2rem;
-    letter-spacing: 3px;
-  }
-  header p {
-    font-size: 1.3rem;
-  }
   .product-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     padding: 40px;
-  }
-  .product-card img {
-    height: 250px;
-  }
-  .product-info h3 {
-    font-size: 1.7rem;
-  }
-  .modal-content {
-    max-width: 600px;
-  }
-  form h2 {
-    font-size: 2.2rem;
-  }
-  .scroll-to-top {
-    width: 50px;
-    height: 50px;
-    font-size: 1.6rem;
-    bottom: 25px;
-    right: 25px;
   }
 }
 
 @media (max-width: 768px) {
-  .pix-notice {
-    font-size: 1rem;
-    padding: 12px 0;
-  }
   header {
-    padding: 3rem 0.8rem 3.5rem;
-  }
-  header .logo {
-    width: 150px;
+    padding: 2rem 1rem 3rem;
   }
   header h1 {
     font-size: 2.8rem;
-    letter-spacing: 2px;
   }
   header p {
     font-size: 1.1rem;
   }
-  .search-bar {
-    flex-direction: column; /* Stack input and button */
-    gap: 10px;
-  }
-  .search-bar input {
-    width: 100%; /* Full width */
-  }
-  .search-bar button {
-    width: 100%; /* Full width */
-  }
   .product-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     padding: 30px;
     gap: 25px;
   }
-  .product-card img {
-    height: 200px;
-  }
-  .product-info h3 {
-    font-size: 1.4rem;
-  }
-  .product-info p {
-    font-size: 0.95rem;
-    min-height: 60px;
-  }
-  .product-info .price {
-    font-size: 1.2rem;
-    padding: 8px 15px;
-  }
-  .buy-button {
-    font-size: 1.1rem;
-    padding: 15px;
-  }
   .modal-content {
     width: 95%;
-    padding: 30px;
+    padding: 25px;
   }
   .close {
-    font-size: 2.5rem;
-    top: 15px;
-    right: 20px;
-  }
-  form h2 {
-    font-size: 2rem;
-  }
-  form label {
-    font-size: 1.1rem;
-  }
-  form input {
-    padding: 14px;
-    font-size: 1rem;
-  }
-  form button {
-    font-size: 1.2rem;
-    padding: 18px;
-  }
-  footer {
-    padding: 3rem;
-    margin-top: 4rem;
-  }
-  footer p {
-    font-size: 1rem;
-  }
-  .social-links a {
-    font-size: 2rem;
-  }
-  .scroll-to-top {
-    width: 45px;
-    height: 45px;
-    font-size: 1.5rem;
-    bottom: 20px;
-    right: 20px;
+    top: 10px;
+    right: 15px;
   }
 }
 
@@ -889,55 +545,35 @@ footer p {
     font-size: 0.9rem;
     min-height: auto;
   }
-  .product-info .price {
-    font-size: 1rem;
-    padding: 7px 12px;
+  .product-info .prices {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .product-info .original-price {
+    font-size: 0.9rem;
+  }
+  .product-info .current-price {
+    font-size: 1.4rem;
   }
   .buy-button {
     font-size: 1rem;
-    padding: 12px;
-    width: calc(100% - 10px);
+    padding: 10px 15px;
+  }
+  .search-bar input {
+    width: 200px;
+    padding: 10px 15px;
+  }
+  .search-bar button {
+    padding: 10px 15px;
   }
   .modal-content {
-    padding: 25px;
+    padding: 20px;
   }
-  .close {
-    font-size: 2rem;
-    top: 10px;
-    right: 15px;
+  .modal-content h2 {
+    font-size: 1.5rem;
   }
-  form h2 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-  }
-  form label {
+  .modal-content button[type="submit"] {
     font-size: 1rem;
-  }
-  form input {
-    padding: 12px;
-    font-size: 0.9rem;
-  }
-  form button {
-    font-size: 1.1rem;
-    padding: 16px;
-    margin-top: 20px;
-  }
-  footer {
-    padding: 2rem;
-    margin-top: 3rem;
-  }
-  footer p {
-    font-size: 0.9rem;
-  }
-  .social-links a {
-    font-size: 1.8rem;
-    gap: 20px;
-  }
-  .scroll-to-top {
-    width: 40px;
-    height: 40px;
-    font-size: 1.3rem;
-    bottom: 15px;
-    right: 15px;
+    padding: 12px 20px;
   }
 }
