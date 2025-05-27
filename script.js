@@ -49,14 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // Atualiza o texto de contagem de produtos no cabeçalho
-  const updateProductCount = (count) => {
-    const productCountElement = document.getElementById('productCount');
-    if (productCountElement) {
-      productCountElement.textContent = `A melhor seleção de pods do BR (${count} produtos)`;
-    }
-  };
-
   // Renderiza os produtos na grade
   const renderProducts = (podsToRender) => {
     productsContainer.innerHTML = ''; // Limpa os produtos existentes na grade
