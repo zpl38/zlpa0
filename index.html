@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZPL Pods</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="pix-notice"><span>Aviso:</span> Somente aceitamos Pix como forma de pagamento.</div>
+    <img src="https://cdn.discordapp.com/attachments/1376675606573617326/1376722152127991928/logo.png?ex=68365beb&is=68350a6b&hm=06668e6c1c01d4524566b05fd3bb9f2c0a831dc7902fc2e591aa30fce01ae743&" alt="ZPL Pods Logo" class="logo">
+    <h1>ZPL Pods</h1>
+    <p id="productCount">A melhor seleção de pods do BRASIL!</p>
+  </header>
+
+  <div id="products" class="product-grid"></div>
+
+  <div id="addressModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Informe seu Endereço</h2>
+      <form id="addressForm">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="street">Rua:</label>
+        <input type="text" id="street" name="street" required>
+        <label for="city">Cidade:</label>
+        <input type="text" id="city" name="city" required>
+        <label for="state">Estado:</label>
+        <input type="text" id="state" name="state" required>
+        <label for="zip">CEP:</label>
+        <input type="text" id="zip" name="zip" required>
+        <button type="submit">Finalizar Compra</button>
+      </form>
+    </div>
+  </div>
+
+<footer>
+  <div class="social-links">
+    <a href="https://www.instagram.com/zpl_pods/" target="_blank" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://wa.me/+5516996963425" target="_blank" aria-label="WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <p>© 2025 ZPL Pods. Todos os direitos reservados.</p>
+  </div>
+</footer>
+  <script src="script.js"></script>
+</body>
+</html>
