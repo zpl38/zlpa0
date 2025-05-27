@@ -434,7 +434,7 @@ header p:hover::before {
 
 /* Modal Styling - More immersive */
 .modal {
-  display: none;
+  display: none; /* Initially hidden */
   position: fixed;
   top: 0;
   left: 0;
@@ -444,9 +444,14 @@ header p:hover::before {
   backdrop-filter: blur(8px); /* Glassmorphism background blur */
   z-index: 1000;
   animation: fadeIn 0.5s ease-in-out;
-  display: flex;
+  /* Removed 'display: flex' from here, it will be added by .show-modal */
   align-items: center;
   justify-content: center;
+}
+
+/* NEW: Rule to show the modal when the 'show-modal' class is present */
+.modal.show-modal {
+  display: flex; /* Makes the modal visible and centers its content */
 }
 
 .modal-content {
