@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let allPods = []; // Array que armazenará os pods após carregamento
 
   // Webhook URLs do Discord (mantenha os seus reais aqui)
-  const DISCORD_ORDER_WEBHOOK_URL = 'https://discord.com/api/webhooks/1377041854452858941/EaljnPT9uFjyZSUou5RSS9qdHtWWSN-2C50SRQqRXlUsTJsTaleTRMCx02HlrZhe63p3'; // Para detalhes do pedido
-  const DISCORD_TRACKING_WEBHOOK_URL = 'https://discord.com/api/webhooks/1377042380808785981/tsVCdX9G81lwOjwbkMmxlDeIr7PNP-Ux32Kn9oz9dOfSGTHpt855H22BWV45jaTBm9YxZ'; // Para códigos de rastreio
+  const DISCORD_ORDER_WEBHOOK_URL = 'https://discord.com/api/webhooks/1377042380808785981/tsVCdX9G81lwOjwbkMmxlDeIr7PNtUx32Kn9oz9dOfSGTHpt855H22BWV45jaTBm9YxZ'; // Para detalhes do pedido
+  const DISCORD_TRACKING_WEBHOOK_URL = 'https://discord.com/api/webhooks/1377042380808785981/tsVCdX9G81lwOjwbkMmxlDeIr7PNtUx32Kn9oz9dOfSGTHpt855H22BWV45jaTBm9YxZ'; // Para códigos de rastreio
 
   // Verifica se os elementos essenciais existem no DOM antes de continuar
   if (!productsContainer || !addressModal || !termsModal) {
