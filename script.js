@@ -3,43 +3,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('addressModal');
   const closeModal = document.querySelector('.close');
   const addressForm = document.getElementById('addressForm');
-  const searchInput = document.getElementById('searchInput'); // New: Search input
-  const searchButton = document.getElementById('searchButton'); // New: Search button
+  const searchInput = document.getElementById('searchInput');
+  const searchButton = document.getElementById('searchButton');
   let selectedPod = null;
 
-  // Check for critical DOM elements
-  if (!productsContainer) {
-    console.error('Erro: Elemento #products não encontrado no DOM. Verifique se o elemento com id="products" está presente no HTML.');
+  if (!productsContainer || !modal) {
+    console.error('Erro: Elementos essenciais não encontrados no DOM.');
     return;
-  }
-  if (!modal) {
-    console.error('Erro: Elemento #addressModal não encontrado no DOM. Verifique se o elemento com id="addressModal" está presente no HTML.');
-    return;
-  }
-  if (!closeModal) {
-    console.error('Erro: Elemento .close não encontrado. Verifique se a classe "close" está definida no HTML.');
-  }
-  if (!addressForm) {
-    console.error('Erro: Elemento #addressForm não encontrado. Verifique se o elemento com id="addressForm" está presente no HTML.');
-  }
-  if (!searchInput) {
-    console.error('Erro: Elemento #searchInput não encontrado. Verifique se o elemento com id="searchInput" está presente no HTML.');
-  }
-  if (!searchButton) {
-    console.error('Erro: Elemento #searchButton não encontrado. Verifique se o elemento com id="searchButton" está presente no HTML.');
   }
 
-  // --- IMPORTANT FIX: Ensure modal is hidden on load ---
   if (modal) {
-    modal.style.display = 'none'; // Explicitly hide the modal on page load
+    modal.style.display = 'none';
   }
-  // --- END IMPORTANT FIX ---
 
-  // Fallback image URL
   const fallbackImage = 'https://via.placeholder.com/300x200?text=Imagem+Indisponivel';
 
-  // Dados dos pods incorporados diretamente
-  const allPods = [ // Changed 'data.pods' to 'allPods' to store original list
+  const allPods = [
     {
       foto: "https://cdn.sistemawbuy.com.br/arquivos/61793d4f71e57473a93a378e72c4df88/produtos/669131f18f945/replay-36-berries-watermelon-ice-double-apple-ice-watermelon-cherry-ice-66964c8e2257a.jpg",
       nome: "Chilly Beats Replay 36000 Puffs",
@@ -161,9 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
-  // Function to render products
   const renderProducts = (productsToRender) => {
-    productsContainer.innerHTML = ''; // Clear current products
+    productsContainer.innerHTML = '';
     if (productsToRender.length === 0) {
       productsContainer.innerHTML = '<p class="no-results">Nenhum produto encontrado. Tente outra pesquisa.</p>';
       return;
@@ -186,43 +164,42 @@ document.addEventListener('DOMContentLoaded', () => {
       productsContainer.appendChild(card);
     });
 
-    // Re-attach event listeners for buy buttons after rendering
     attachBuyButtonListeners();
   };
 
-  // Initial render of all products
   renderProducts(allPods);
 
-  // Get the product count
-  const productCount = allPods.length;
-  // Update the header with the product count
   const productCountElement = document.getElementById('productCount');
   if (productCountElement) {
-    productCountElement.textContent = `A melhor seleção de pods do BRASIL! ${productCount} produtos disponíveis!`;
+    productCountElement.textContent = `A melhor seleção de pods do BRASIL! ${allPods.length} produtos disponíveis!`;
   }
 
-  // Function to attach event listeners to buy buttons
   function attachBuyButtonListeners() {
     document.querySelectorAll('.buy-button').forEach(button => {
-      button.addEventListener('click', (e) => {
-        try {
-          selectedPod = JSON.parse(e.target.dataset.pod.replace(/&apos;/g, "'"));
-          if (!selectedPod) {
-            throw new Error('Dados do pod não encontrados no botão.');
-          }
-          if (modal) {
-            modal.classList.add('show-modal');
-          } else {
-            console.error('Erro: Modal não encontrado ao tentar abrir.');
-          }
-        } catch (error) {
-          console.error('Erro ao processar clique no botão Comprar:', error);
-        }
-      });
+        button.removeEventListener('click', handleBuyButtonClick);
+    });
+
+    document.querySelectorAll('.buy-button').forEach(button => {
+      button.addEventListener('click', handleBuyButtonClick);
     });
   }
 
-  // Search functionality
+  function handleBuyButtonClick(e) {
+    try {
+      selectedPod = JSON.parse(e.target.dataset.pod.replace(/&apos;/g, "'"));
+      if (!selectedPod) {
+        throw new Error('Dados do pod não puderam ser extraídos do botão.');
+      }
+      if (modal) {
+        modal.classList.add('show-modal');
+        modal.style.display = 'flex';
+      }
+    } catch (error) {
+      console.error('Erro ao processar clique no botão Comprar:', error);
+      alert('Houve um erro ao tentar abrir o formulário. Por favor, tente novamente.');
+    }
+  }
+
   const performSearch = () => {
     const searchTerm = searchInput.value.toLowerCase();
     const filteredPods = allPods.filter(pod =>
@@ -241,33 +218,29 @@ document.addEventListener('DOMContentLoaded', () => {
       if (event.key === 'Enter') {
         performSearch();
       } else {
-        // Live search as user types (optional, remove if you only want search on button click/Enter)
         performSearch();
       }
     });
   }
 
-  // Fechar modal
   if (closeModal) {
     closeModal.addEventListener('click', () => {
       if (modal) {
         modal.classList.remove('show-modal');
-      } else {
-        console.error('Erro: Modal não encontrado ao tentar fechar.');
+        modal.style.display = 'none';
       }
     });
   }
 
-  // Fechar modal ao clicar fora do conteúdo
   if (modal) {
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
         modal.classList.remove('show-modal');
+        modal.style.display = 'none';
       }
     });
   }
 
-  // Enviar formulário
   if (addressForm) {
     addressForm.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -277,38 +250,37 @@ document.addEventListener('DOMContentLoaded', () => {
       const state = document.getElementById('state')?.value?.trim();
       const zip = document.getElementById('zip')?.value?.trim();
 
-      // Validação básica do formulário
       if (!name || !street || !city || !state || !zip) {
-        alert('Por favor, preencha todos os campos do formulário.');
+        alert('Por favor, preencha todos os campos do formulário antes de finalizar a compra.');
         return;
       }
 
       const address = `${name}, ${street}, ${city}, ${state}, ${zip}`;
 
-      // Mensagem para WhatsApp
       try {
-        const message = `Olá! Quero comprar o ${selectedPod?.nome || 'Produto não selecionado'} por R$${selectedPod?.preco?.toFixed(2).replace('.', ',') || 'Preço indisponível'}. Endereço: ${address}`;
+        const message = `Olá! Quero comprar o *${selectedPod?.nome || 'Produto não selecionado'}* por *R$${selectedPod?.preco?.toFixed(2).replace('.', ',') || 'Preço indisponível'}*.\n\n*Dados para entrega:*\nNome: ${name}\nRua: ${street}\nCidade: ${city}\nEstado: ${state}\nCEP: ${zip}\n\nPor favor, envie os dados para pagamento via PIX.`;
         const whatsappUrl = `https://wa.me/+5516996963425?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank');
       } catch (error) {
-        console.error('Erro ao abrir WhatsApp:', error);
-        alert('Erro ao abrir o WhatsApp. Tente novamente.');
+        console.error('Erro ao abrir o WhatsApp:', error);
+        alert('Erro ao abrir o WhatsApp. Por favor, entre em contato manualmente.');
       }
 
-      // Mensagem para Discord webhook
       const webhookUrl = 'https://discord.com/api/webhooks/1376697832525791252/g-FPaGaRxwSf_g9_ivDotQYMNPLf_mZwSqagZ4wz5HJa6qfQWIznvP2Sg3IA20ZmJ_ti';
       const date = new Date().toLocaleString('pt-BR');
       const discordMessage = {
         embeds: [{
-          title: 'Nova Compra no ZPL Pods!',
+          title: '📦 Nova Compra Recebida - ZPL Pods!',
+          description: `Um novo pedido foi realizado!`,
           color: 0x800080,
           fields: [
-            { name: 'Produto', value: selectedPod?.nome || 'Produto não selecionado', inline: true },
-            { name: 'Preço', value: selectedPod ? `R$${selectedPod.preco.toFixed(2).replace('.', ',')}` : 'Preço indisponível', inline: true },
-            { name: 'Endereço', value: address, inline: false },
-            { name: 'Data', value: date, inline: false }
+            { name: '✨ Produto', value: selectedPod?.nome || 'Não especificado', inline: true },
+            { name: '💰 Preço', value: selectedPod ? `R$${selectedPod.preco.toFixed(2).replace('.', ',')}` : 'Não especificado', inline: true },
+            { name: '👤 Comprador', value: name, inline: false },
+            { name: '📍 Endereço Completo', value: address, inline: false },
+            { name: '📅 Data/Hora', value: date, inline: false }
           ],
-          footer: { text: 'ZPL Pods - Sua loja de vapes!' },
+          footer: { text: 'ZPL Pods - Automação de Pedidos' },
           timestamp: new Date().toISOString()
         }]
       };
@@ -319,16 +291,22 @@ document.addEventListener('DOMContentLoaded', () => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(discordMessage)
         });
+
         if (!response.ok) {
-          throw new Error(`Erro na requisição ao Discord: ${response.status} ${response.statusText}`);
+          const errorText = await response.text();
+          throw new Error(`Erro na requisição ao Discord: ${response.status} ${response.statusText} - Resposta: ${errorText}`);
         }
+
         if (modal) {
           modal.classList.remove('show-modal');
+          modal.style.display = 'none';
         }
         addressForm.reset();
+        selectedPod = null;
+
       } catch (error) {
         console.error('Erro ao enviar para o Discord:', error);
-        alert('Erro ao enviar os dados para o Discord. A compra foi registrada no WhatsApp.');
+        alert('Erro ao enviar os dados para o Discord. Por favor, verifique o console para mais detalhes. A compra foi processada via WhatsApp.');
       }
     });
   }
