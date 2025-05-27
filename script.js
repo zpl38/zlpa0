@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
         throw new Error(`Erro ao enviar código de rastreio para o Discord: ${trackingResponse.status} ${trackingResponse.statusText} - Resposta: ${errorText}`);
       }
 
-      alert(`Pedido finalizado! O código de rastreio ${trackingCode} foi enviado ao Discord. Você será redirecionado para a página de pagamento.`);
+      alert(`Pedido finalizado! O código de rastreio ${trackingCode} foi enviado. Você será redirecionado para a página de pagamento.`);
       addressModal.style.display = 'none'; // Esconde o modal
       addressForm.reset(); // Limpa o formulário
       window.open(selectedPod.purchaseLink, '_blank'); // Redireciona para o link de compra
