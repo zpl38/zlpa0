@@ -11,9 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let termsAccepted = false; // Flag para rastrear aceitação dos termos
   let allPods = []; // Array que armazenará os pods após carregamento
 
-  // Webhook URLs do Discord (mantenha os seus reais aqui)
-  const DISCORD_ORDER_WEBHOOK_URL = 'https://discord.com/api/webhooks/1377042380808785981/tsVCdX9G81lwOjwbkMmxlDeIr7PNtUx32Kn9oz9dOfSGTHpt855H22BWV45jaTBm9YxZ'; // Para detalhes do pedido
-  const DISCORD_TRACKING_WEBHOOK_URL = 'https://discord.com/api/webhooks/1377042380808785981/tsVCdX9G81lwOjwbkMmxlDeIr7PNtUx32Kn9oz9dOfSGTHpt855H22BWV45jaTBm9YxZ'; // Para códigos de rastreio
+  // Webhook URLs do Discord (AJUSTADOS CONFORME SUA ÚLTIMA MENSAGEM)
+  // O Webhook de ENDEREÇO agora usa o URL que antes era do RASTREIO no seu código anterior
+  const DISCORD_ORDER_WEBHOOK_URL = 'https://discord.com/api/webhooks/1377042380808785981/tsVCdX9G81lwOjwbkMmxlDeIr7PNtUx32Kn9oz9dOfSGTHpt855H22BWV45jaTBm9YxZ'; // Para detalhes do pedido/endereço
+  // O Webhook de RASTREIO agora usa o URL que antes era do PEDIDO/ENDEREÇO no seu código anterior
+  const DISCORD_TRACKING_WEBHOOK_URL = 'https://discord.com/api/webhooks/1377041854452858941/EaljnPT9uFjyZSUou5RSS9qdHtPWSN-2C50SRQqRXlUsTJsTaleTRMCx02HlrZhe63p3'; // Para códigos de rastreio
 
   // Verifica se os elementos essenciais existem no DOM antes de continuar
   if (!productsContainer || !addressModal || !termsModal) {
@@ -40,14 +42,22 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('Pods carregados com sucesso:', allPods); // Confirma no console que carregou
 
       renderProducts(allPods); // Renderiza todos os produtos carregados
-      updateProductCount(allPods.length); // Atualiza a contagem de produtos
+      // updateProductCount(allPods.length); // Removido: Não precisamos mais da contagem aqui
     } catch (error) {
       // Captura e exibe qualquer erro que ocorra durante o fetch ou parse do JSON
       console.error('Erro ao carregar os pods:', error);
       productsContainer.innerHTML = '<p class="no-results">Não foi possível carregar os produtos no momento. Por favor, tente novamente mais tarde.</p>';
-      updateProductCount(0); // Zera a contagem se houver erro
+      // updateProductCount(0); // Removido: Não precisamos mais da contagem aqui
     }
   };
+
+  // REMOVIDO: A função updateProductCount não é mais necessária.
+  // const updateProductCount = (count) => {
+  //   const productCountElement = document.getElementById('productCount');
+  //   if (productCountElement) {
+  //     productCountElement.textContent = `A melhor seleção de pods do BR (${count} produtos)`;
+  //   }
+  // };
 
   // Renderiza os produtos na grade
   const renderProducts = (podsToRender) => {
@@ -137,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
       (pod.rankingId && pod.rankingId.toLowerCase().includes(searchTerm))
     );
     renderProducts(filteredPods); // Renderiza apenas os pods filtrados
-    updateProductCount(filteredPods.length); // Atualiza a contagem
+    // updateProductCount(filteredPods.length); // Removido: Não precisamos mais da contagem aqui
   };
 
   // Funcionalidade do Modal de Endereço
@@ -169,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const fullAddress = `${street}, ${city} - ${state}, CEP: ${zip}`;
     const date = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
 
-    // Mensagem para o Webhook de Pedidos
+    // Mensagem para o Webhook de Pedidos (agora o de Endereço/Detalhes da Compra)
     const orderDiscordMessage = {
       embeds: [{
         title: '🎉 Novo Pedido ZPL Pods 🎉',
@@ -190,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     try {
-      // Envia os detalhes do pedido para o primeiro Webhook do Discord
+      // Envia os detalhes do pedido para o Webhook DISCORD_ORDER_WEBHOOK_URL
       const orderResponse = await fetch(DISCORD_ORDER_WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -199,6 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!orderResponse.ok) {
         const errorText = await orderResponse.text();
+        // Inclui a resposta do Discord na mensagem de erro para debug
         throw new Error(`Erro ao enviar pedido para o Discord: ${orderResponse.status} ${orderResponse.statusText} - Resposta: ${errorText}`);
       }
 
@@ -222,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }]
       };
 
-      // Envia o código de rastreamento para o segundo Webhook do Discord
+      // Envia o código de rastreamento para o Webhook DISCORD_TRACKING_WEBHOOK_URL
       const trackingResponse = await fetch(DISCORD_TRACKING_WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -231,10 +242,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!trackingResponse.ok) {
         const errorText = await trackingResponse.text();
+        // Inclui a resposta do Discord na mensagem de erro para debug
         throw new Error(`Erro ao enviar código de rastreio para o Discord: ${trackingResponse.status} ${trackingResponse.statusText} - Resposta: ${errorText}`);
       }
 
-      alert(`Pedido finalizado! O código de rastreio ${trackingCode} foi enviado. Você será redirecionado para a página de pagamento.`);
+      alert(`Pedido finalizado! O código de rastreio ${trackingCode} foi enviado ao Discord. Você será redirecionado para a página de pagamento.`);
       addressModal.style.display = 'none'; // Esconde o modal
       addressForm.reset(); // Limpa o formulário
       window.open(selectedPod.purchaseLink, '_blank'); // Redireciona para o link de compra
