@@ -1,89 +1,89 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZPL Pods</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header>
-    <img src="https://cdn.discordapp.com/attachments/1376675606573617326/1376722152127991928/logo.png?ex=683704ab&is=6835b32b&hm=d232f2cb3d8441539934d1080ce21634d322f3c307e0aa09247d36e26ef366ff&" alt="ZPL Pods Logo" class="logo">
-    <h1>ZPL Pods</h1>
-    <p id="productCount">A melhor seleção de pods do BR</p>
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Pesquisar pods..." aria-label="Pesquisar produtos">
-      <button id="searchButton" aria-label="Botão de Pesquisa"><i class="fas fa-search"></i></button>
-    </div>
-  </header>
+ <html lang="pt-BR">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZPL Pods</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+ </head>
+ <body>
+    <header>
+      <img src="/lib/logo.png" alt="ZPL Pods Logo" class="logo">
+      <h1>ZPL Pods</h1>
+      <p id="productCount">A melhor seleção de pods do BR</p>
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Pesquisar pods..." aria-label="Pesquisar produtos">
+        <button id="searchButton" aria-label="Botão de Pesquisa"><i class="fas fa-search"></i></button>
+      </div>
+    </header>
 
-  <div id="products" class="product-grid"></div>
+    <div id="products" class="product-grid"></div>
 
-  <div id="addressModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Informe seu Endereço</h2>
-      <form id="addressForm">
-        <label for="name">Nome Completo:</label>
-        <input type="text" id="name" name="name" required>
-        <label for="street">Rua e Número:</label>
-        <input type="text" id="street" name="street" required>
-        <label for="city">Cidade:</label>
-        <input type="text" id="city" name="city" required>
-        <label for="state">Estado (UF):</label>
-        <input type="text" id="state" name="state" maxlength="2" required>
-        <label for="zip">CEP:</label>
-        <input type="text" id="zip" name="zip" pattern="[0-9]{5}-?[0-9]{3}" placeholder="Ex: 12345-678" required>
-        <button type="submit">Finalizar Compra</button>
-      </form>
-    </div>
-  </div>
+    <div id="addressModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Informe seu Endereço</h2>
+        <form id="addressForm">
+          <label for="name">Nome Completo:</label>
+          <input type="text" id="name" name="name" required>
+          <label for="street">Rua e Número:</label>
+          <input type="text" id="street" name="street" required>
+          <label for="city">Cidade:</label>
+          <input type="text" id="city" name="city" required>
+          <label for="state">Estado (UF):</label>
+          <input type="text" id="state" name="state" maxlength="2" required>
+          <label for="zip">CEP:</label>
+          <input type="text" id="zip" name="zip" pattern="[0-9]{5}-?[0-9]{3}" placeholder="Ex: 12345-678" required>
+          <button type="submit">Finalizar Compra</button>
+        </form>
+      </div>
+    </div>
 
-  <div id="termsModal" class="modal">
-    <div class="modal-content">
-      <h2>Termos e Condições de Uso da ZPL Pods</h2>
-      <div class="terms-text">
-        <h3>1. Sobre a ZPL Pods</h3>
-        <p>A ZPL Pods é uma plataforma de e-commerce dedicada à venda de pods descartáveis e relacionados. Ao acessar e utilizar nossos serviços, você concorda em cumprir e estar vinculado aos termos e condições descritos aqui.</p>
+    <div id="termsModal" class="modal">
+      <div class="modal-content">
+        <h2>Termos e Condições de Uso da ZPL Pods</h2>
+        <div class="terms-text">
+          <h3>1. Sobre a ZPL Pods</h3>
+          <p>A ZPL Pods é uma plataforma de e-commerce dedicada à venda de pods descartáveis e relacionados. Ao acessar e utilizar nossos serviços, você concorda em cumprir e estar vinculado aos termos e condições descritos aqui.</p>
 
-        <h3>2. Formas de Pagamento</h3>
-        <p>Atualmente, a ZPL Pods aceita **somente Pix** como forma de pagamento. Não são aceitas outras modalidades como cartão de crédito, boleto, transferência bancária (fora do Pix) ou dinheiro em espécie. A confirmação do pedido está condicionada à compensação do pagamento via Pix.</p>
+          <h3>2. Formas de Pagamento</h3>
+          <p>Atualmente, a ZPL Pods aceita **somente Pix** como forma de pagamento. Não são aceitas outras modalidades como cartão de crédito, boleto, transferência bancária (fora do Pix) ou dinheiro em espécie. A confirmação do pedido está condicionada à compensação do pagamento via Pix.</p>
 
-        <h3>3. Envio e Rastreamento</h3>
-        <p>Todos os pedidos efetuados e confirmados terão seus envios processados e um código de rastreamento será gerado e enviado para o Discord da nossa equipe para acompanhamento interno. Não nos responsabilizamos por atrasos na entrega causados por terceiros (transportadoras, Correios) ou por informações de endereço incorretas fornecidas pelo cliente.</p>
+          <h3>3. Envio e Rastreamento</h3>
+          <p>Todos os pedidos efetuados e confirmados terão seus envios processados e um código de rastreamento será gerado e enviado para o Discord da nossa equipe para acompanhamento interno. Não nos responsabilizamos por atrasos na entrega causados por terceiros (transportadoras, Correios) ou por informações de endereço incorretas fornecidas pelo cliente.</p>
 
-        <h3>4. Política de Reembolso e Devolução</h3>
-        <p>É crucial que o cliente esteja ciente e concorde que a **ZPL Pods não realiza reembolsos, trocas ou devoluções** de produtos. Todos os produtos são vendidos "como estão" e a responsabilidade pela escolha do produto é inteiramente do comprador. Não aceitamos devoluções por arrependimento, incompatibilidade, ou qualquer outro motivo, uma vez que o pedido tenha sido processado e enviado.</p>
+          <h3>4. Política de Reembolso e Devolução</h3>
+          <p>É crucial que o cliente esteja ciente e concorde que a **ZPL Pods não realiza reembolsos, trocas ou devoluções** de produtos. Todos os produtos são vendidos "como estão" e a responsabilidade pela escolha do produto é inteiramente do comprador. Não aceitamos devoluções por arrependimento, incompatibilidade, ou qualquer outro motivo, uma vez que o pedido tenha sido processado e enviado.</p>
 
-        <h3>5. Privacidade dos Dados</h3>
-        <p>As informações pessoais fornecidas durante o processo de compra (nome, endereço, contato) serão utilizadas exclusivamente para o processamento e envio do seu pedido. A ZPL Pods compromete-se a proteger a privacidade dos seus dados e não os compartilhará com terceiros para fins de marketing ou outros, exceto quando exigido por lei.</p>
+          <h3>5. Privacidade dos Dados</h3>
+          <p>As informações pessoais fornecidas durante o processo de compra (nome, endereço, contato) serão utilizadas exclusivamente para o processamento e envio do seu pedido. A ZPL Pods compromete-se a proteger a privacidade dos seus dados e não os compartilhará com terceiros para fins de marketing ou outros, exceto quando exigido por lei.</p>
 
-        <h3>6. Responsabilidade do Usuário</h3>
-        <p>Ao realizar um pedido na ZPL Pods, você declara ter idade legal para adquirir os produtos comercializados e que as informações fornecidas são verdadeiras e precisas. Qualquer informação falsa ou imprecisa pode resultar no cancelamento do pedido sem aviso prévio.</p>
+          <h3>6. Responsabilidade do Usuário</h3>
+          <p>Ao realizar um pedido na ZPL Pods, você declara ter idade legal para adquirir os produtos comercializados e que as informações fornecidas são verdadeiras e precisas. Qualquer informação falsa ou imprecisa pode resultar no cancelamento do pedido sem aviso prévio.</p>
 
-        <h3>7. Contato</h3>
-        <p>Para dúvidas, suporte ou mais informações, entre em contato conosco através do nosso Instagram oficial: <a href="https://www.instagram.com/zpl_pods/" target="_blank">@zpl_pods</a>. Estamos disponíveis para ajudar com qualquer questão relacionada aos nossos produtos ou serviços.</p>
+          <h3>7. Contato</h3>
+          <p>Para dúvidas, suporte ou mais informações, entre em contato conosco através do nosso Instagram oficial: <a href="https://www.instagram.com/zpl_pods/" target="_blank">@zpl_pods</a>. Estamos disponíveis para ajudar com qualquer questão relacionada aos nossos produtos ou serviços.</p>
 
-        <p>Ao clicar em "Aceito os Termos", você confirma que leu, entendeu e concorda com todos os termos e condições acima.</p>
-      </div>
-      <button id="acceptTermsButton">Aceito os Termos</button>
-    </div>
-  </div>
+          <p>Ao clicar em "Aceito os Termos", você confirma que leu, entendeu e concorda com todos os termos e condições acima.</p>
+        </div>
+        <button id="acceptTermsButton">Aceito os Termos</button>
+      </div>
+    </div>
 
-<footer>
-  <div class="social-links">
-    <a href="https://www.instagram.com/zpl_pods/" target="_blank" aria-label="Instagram">
-      <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://wa.me/5519999999999" target="_blank" aria-label="WhatsApp">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-  </div>
-  <p>&copy; 2024 ZPL Pods. Todos os direitos reservados.</p>
-</footer>
+  <footer>
+    <div class="social-links">
+      <a href="https://www.instagram.com/zpl_pods/" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://wa.me/5519999999999" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </div>
+    <p>&copy; 2024 ZPL Pods. Todos os direitos reservados.</p>
+ </footer>
 
-  <script src="script.js"></script>
-</body>
-</html>
+    <script src="script.js"></script>
+ </body>
+ </html>
