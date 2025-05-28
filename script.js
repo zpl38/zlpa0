@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // ATENÇÃO: Os dois webhooks estão com a mesma URL. Se você deseja enviar
   // pedidos e rastreamentos para canais diferentes, substitua os URLs abaixo
   // pelos seus webhooks reais e distintos.
-  const DISCORD_ORDER_WEBHOOK_URL = 'https://discord.com/api/webhooks/1377041854452858941/EaljnPT9uFjyZSUouR_SS9qdHtPWSN-2C50SRQqRXlUsTJsTaleTRMCx02HlrZhe63p3'; // Para detalhes do pedido
-  const DISCORD_TRACKING_WEBHOOK_URL = 'https://discord.com/api/webhooks/1377041854452858941/EaljnPT9uFjyZSUouR_SS9qdHtPWSN-2C50SRQqRXlUsTJsTaleTRMCx02HlrZhe63p3'; // Para códigos de rastreio
+  const DISCORD_ORDER_WEBHOOK_URL = 'https://discord.com/api/webhooks/1377427951204962345/vA5CdtbV8Dg0MDyLLCeLw2BnwkfxYU5nEusi7rKbsR0shB2hmSRdKTZnxqlR-v6fuacQ'; // Para detalhes do pedido
+  const DISCORD_TRACKING_WEBHOOK_URL = 'https://discord.com/api/webhooks/1377427951204962345/vA5CdtbV8Dg0MDyLLCeLw2BnwkfxYU5nEusi7rKbsR0shB2hmSRdKTZnxqlR-v6fuacQ'; // Para códigos de rastreio
 
   const FALLBACK_IMAGE = 'https://via.placeholder.com/300x200?text=Imagem+Indisponivel';
 
